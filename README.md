@@ -31,12 +31,14 @@ A . Carilah Standar Deviasi dari data selisih pasangan pengamatan tabel diatas
   selisih <- sesudah - sebelum
   sd(selisih)
   ```
+  <img width="482" alt="image" src="https://user-images.githubusercontent.com/105977864/206892687-b32e3192-7f83-495f-a4d2-b7b1a96eb757.png">
   
 B . Carilah nilai t (p-value)  
 - Untuk mendapatkan p-value, kita dapat menggunakan fungsi dari t yaitu test dengan parameter data sesudah dan data sebelum sebagai berikut
     ```R
     t.test(sesudah, sebelum, paired = TRUE)
     ```
+    <img width="480" alt="image" src="https://user-images.githubusercontent.com/105977864/206892717-5bae4e11-6778-4033-94b3-3f964b36be60.png">
 C . Tentukanlah apakah terdapat pengaruh yang signifikan secara statistika dalam hal kadar saturasi oksigen , sebelum dan sesudah melakukan aktivitas 𝐴 jika diketahui tingkat signifikansi 𝛼 = 5% serta H0 : “tidak ada pengaruh yang signifikan secara statistika dalam hal kadar saturasi oksigen , sebelum dan sesudah melakukan aktivitas 𝐴”  
 - Melihat hasil p-value yang didapatkan dari poin b, yakni 6.003e-05, yang mana lebih kecil dari α, 
   maka kita tolak h0 atau terima h1 sehingga dapat disimpulkan bahwa terdapat pengaruh yang signifikan 
@@ -49,7 +51,7 @@ Diketahui bahwa mobil dikemudikan rata-rata lebih dari 20.000 kilometer per tahu
 (Kerjakan menggunakan 16 library seperti referensi pada modul).
 
 A . Apakah Anda setuju dengan klaim tersebut?  
-- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+- Setuju, karena hasil dari perhitungan menggunakan sampel acak untuk 100 responden menunjukkan bahwa rata - rata jarak tempuh mobil pertahunnya mencapai 23.500 km sedangkan klaim soal menyatakan bahwa rata - ratanya lebih dari 20.000 km sehingga sangatlah mungkin bahwa klaim tersebut valid.
   
 B . Jelaskan maksud dari output yang dihasilkan!  
 - Untuk melakukan hal ini, pertama kita perlu install dan run terlebih dahulu package untuk library `BSDA` yang kita butuhkan sebagai berikut,  
@@ -61,6 +63,8 @@ B . Jelaskan maksud dari output yang dihasilkan!
   ```R
   tsum.test(mean.x = 23500, s.x = 3900, n.x = 100)
   ```
+  <img width="481" alt="image" src="https://user-images.githubusercontent.com/105977864/206892921-dc237993-973e-4088-a86c-0e1d7108f711.png">  
+    
   Hasil tersebut menunjukkan bahwa dengan selang kepercayaan sebesar 95%, didapatkan hasil perhitungan rata - rata jarak tempuh mobil menggunakan sampel acak untuk 100 responden adalah di antara 22726,16 km dan 24273,84 km per tahunnya sehingga klaim awal atau h0 pada soal dapat diterima
   
 C . Buatlah kesimpulan berdasarkan P-Value yang dihasilkan!  
@@ -92,6 +96,7 @@ B . Hitung Sampel Statistik
           mean.y = 2.79, s.y = 1.32, n.y = 27, 
           alternative = "greater", var.equal = TRUE)
   ```
+  <img width="493" alt="image" src="https://user-images.githubusercontent.com/105977864/206893003-b153b9c6-fbb4-4f75-afac-7ba6c0eb01a1.png">
 C . Lakukan Uji Statistik (df = 2)  
 - Untuk melakukan hal ini, pertama kita perlu untuk install dan run package untuk library `mosaic` yang kita butuhkan sebagai berikut,  
   ```R
@@ -102,16 +107,18 @@ C . Lakukan Uji Statistik (df = 2)
   ```R
   plotDist(dist = 't', df = 2, col = "red")
   ```
+  <img width="933" alt="image" src="https://user-images.githubusercontent.com/105977864/206893183-a31cb7a8-80ac-42cb-9b46-ae26b4937919.png">
 D . Nilai Kritikal  
 - untuk mendapatkan nilai kritikal, dapat kita gunakan fungsi `qchisq()` dengan derajat bebas yang diminta pada soal sebagai berikut,  
   ```R
   qchisq(p = 0.05, df = 2, lower.tail = FALSE)
   ```
+  <img width="549" alt="image" src="https://user-images.githubusercontent.com/105977864/206893244-be852eea-2bd4-4d23-bac3-22842a15eedf.png">
 E . Keputusan  
 - lorem ipsum dolor sit amet  
   
 F . Kesimpulan  
-- lorem ipsum dolor sit amet
+- Kesimpulan yang didapatkan yaitu perbedaan rata-rata yang terjadi tidak ada jika dilihat dari uji statistik. Namun, akan ada (meski tidak signifikan) jika dipengaruhi oleh nilai kritikal.
 
 <br>
 
@@ -134,6 +141,7 @@ A . Buatlah masing masing jenis spesies menjadi  3 subjek "Grup" (grup 1,grup 2,
   ```R
   class(data$Group)
   ```
+  <img width="551" alt="image" src="https://user-images.githubusercontent.com/105977864/206895109-53188103-cbc0-4053-83e1-32c5edf5d9d1.png">
 - selanjutnya, kelompokkan data tersebut sesuai dengan grupnya masing - masing.  
   ```R
   Group1 <- subset(data, Group == "Kucing Oren")
@@ -151,11 +159,14 @@ A . Buatlah masing masing jenis spesies menjadi  3 subjek "Grup" (grup 1,grup 2,
   qqnorm(Group3$Length)
   qqline(Group3$Length)
   ```
+  <img width="960" alt="image" src="https://user-images.githubusercontent.com/105977864/206895578-c11fe532-77f5-42f3-8458-086e40faa319.png">
 B . Carilah atau periksalah Homogeneity of variances nya , Berapa nilai p yang didapatkan? , Apa hipotesis dan kesimpulan yang dapat diambil?  
 - untuk menguji homogenitas dari variansnya, dapat kita gunakan fungsi `bartlett.test()` sebagai berikut,  
   ```R
   bartlett.test(Length ~ Group, data = data)
   ```
+  <img width="549" alt="image" src="https://user-images.githubusercontent.com/105977864/206895805-a9904191-af76-459c-9648-2518ead651f5.png">  
+    
   yang didapatkan nilai Bartlett's K-squared sebesar 0.43292, df = 2, dan p-value = 0.8054  
   
 C . Untuk uji ANOVA (satu arah), buatlah model linier dengan Panjang versus Grup dan beri nama model tersebut model 1.  
@@ -164,14 +175,17 @@ C . Untuk uji ANOVA (satu arah), buatlah model linier dengan Panjang versus Grup
   model1 = lm(Length ~ Group, data = data)
   anova(model1)
   ```
+  <img width="548" alt="image" src="https://user-images.githubusercontent.com/105977864/206898166-3d6903c7-ba7f-4401-a40b-f77a25dca4f0.png">
 D . Dari Hasil Poin C, Berapakah nilai-p ? , Apa yang dapat Anda simpulkan dari H0?  
-- lorem ipsum dolor sit amet  
+- Berdasarkan hasil yang didapatkan pada poin sebelumnya, p-value bernilai 0.0013 dengan taraf 5%. Maka, terdapat perbedaan panjang kucing yang signifikan berdasarkan grupnya.
   
 E . Verifikasilah jawaban model 1 dengan Post-hoc test Tukey HSD, dari nilai p yang didapatkan apakah satu jenis kucing lebih panjang dari yang lain? jelaskan.  
 - untuk melakukan verifikasi menggunakan test Tuket, dapat kita gunakan fungsi `tukeyHSD()` dengan parameter yang akan dicek sebagai berikut,  
   ```R
   TukeyHSD(aov(model1))
   ```
+  <img width="478" alt="image" src="https://user-images.githubusercontent.com/105977864/206898664-c54bb30d-d65d-4997-9f7b-833ebade2237.png">
+    
   Dari hasil tersebut, dapat dilihat bahwa dengan menggunakan 𝛼 = 5%, perbedaan panjang kucing yang signifikan adalah grup 2 (Kucing Hitam) terhadap grup 1 (Kucing Oren) dan grup 3 (Kucing Putih).  
   
 F . Visualisasikan data dengan ggplot2  
@@ -184,6 +198,7 @@ F . Visualisasikan data dengan ggplot2
   ```R
   ggplot(dataoneway, aes(x = Group, y = Length)) + geom_boxplot(fill = "grey80", colour = "black") + scale_x_discrete() + xlab("Treatment Group") + ylab("Length (cm)")
   ```
+  <img width="960" alt="image" src="https://user-images.githubusercontent.com/105977864/206898740-6ccf9b08-8925-424e-8427-9d061a704d3c.png">
 
 <br>
 
@@ -204,15 +219,18 @@ A . Buatlah plot sederhana untuk visualisasi data
   GTL <- read_csv("GTL.csv")
   head(GTL)
   ```
+  <img width="592" alt="image" src="https://user-images.githubusercontent.com/105977864/206898809-ff8b7623-f371-4c60-9cf7-7aa54b530476.png">
 - lalu lakukan observasi data sebagai berikut,  
   ```R
   str(GTL)
   ```
+  <img width="591" alt="image" src="https://user-images.githubusercontent.com/105977864/206898858-496f699f-f954-460b-aecb-c1e3e6e37f41.png">
 - barulah visualisasikan dengan *simple plot* menggunakan fungsi `qplot()` sebagai berikut,  
   ```R
   qplot(x = Temp, y = Light, geom = "point", data = GTL) +
   facet_grid(.~Glass, labeller = label_both)
   ```
+  <img width="960" alt="image" src="https://user-images.githubusercontent.com/105977864/206898907-75f30b0d-bd4a-4f69-8f08-bc189d10f4a9.png">
 B . Lakukan uji ANOVA dua arah  
 - pertama, buat variabel as.factor sebagai anova dan observasi datanya.  
   ```R
@@ -220,11 +238,13 @@ B . Lakukan uji ANOVA dua arah
   GTL$Temp_Factor <- as.factor(GTL$Temp)
   str(GTL)
   ```
+  <img width="592" alt="image" src="https://user-images.githubusercontent.com/105977864/206898951-b5725b34-9110-45c3-84dd-9583531fe8ca.png">
 - selanjutnya, lakukan *analysis of variance* sebagai berikut,  
   ```R
   anova <- aov(Light ~ Glass*Temp_Factor, data = GTL)
   summary(anova)
   ```
+  <img width="592" alt="image" src="https://user-images.githubusercontent.com/105977864/206898987-35fc5afb-784f-4fdd-8bc7-57968b3624db.png">
 C . Tampilkan tabel dengan mean dan standar deviasi keluaran cahaya untuk setiap perlakuan (kombinasi kaca pelat muka dan suhu operasi)  
 - untuk melakukan hal ini, dapat kita gunakan fungsi `group_by` lalu lakukan `summarise` sesuai mean dan standar deviasi yang berlaku sebagai berikut,  
   ```R
@@ -233,24 +253,30 @@ C . Tampilkan tabel dengan mean dan standar deviasi keluaran cahaya untuk setiap
     arrange(desc(mean))
   print(data_summary)
   ```
+  <img width="592" alt="image" src="https://user-images.githubusercontent.com/105977864/206899121-4067ab78-6661-4fa0-835a-6e0eb4f8f164.png">
+  <img width="592" alt="image" src="https://user-images.githubusercontent.com/105977864/206899084-95716768-946f-46b2-bd2a-4015ba58b206.png">
 D . Lakukan uji Tukey  
 - sama seperti sebelumnya, dapat kita gunakan fungsi `tukeyHSD()` sebagai berikut,  
   ```R
   tukey <- TukeyHSD(anova)
   print(tukey)
   ```
+  <img width="595" alt="image" src="https://user-images.githubusercontent.com/105977864/206899297-ed81bf7b-e3e2-469b-9566-16201183e1e7.png">
+  <img width="596" alt="image" src="https://user-images.githubusercontent.com/105977864/206899358-338c05fc-411a-47f5-99d2-80f115b4dc8f.png">
 E . Gunakan compact letter display untuk menunjukkan perbedaan signifikan antara uji Anova dan uji Tukey
 - pertama, buat terlebih dahulu *compact letter display* menggunakan fungsi `multcompLetters4()` sebagai berikut,  
   ```R
   tukey.cld <- multcompLetters4(anova, tukey)
   print(tukey.cld)
   ```
+  <img width="466" alt="image" src="https://user-images.githubusercontent.com/105977864/206899541-754500ef-7296-492f-830b-94c7456f2589.png">
 - kemudian tambahkan *compact letter display* tersebut ke tabel dengan mean dan standar deviasinya sebagai berikut,  
   ```R
   cld <- as.data.frame.list(tukey.cld$`Glass:Temp_Factor`)
   data_summary$Tukey <- cld$Letters
   print(data_summary)
   ```
+  <img width="466" alt="image" src="https://user-images.githubusercontent.com/105977864/206899605-728f0389-b79b-4496-a258-193d256ac1bf.png">
 <br>
 
 ```
