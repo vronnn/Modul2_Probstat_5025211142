@@ -42,7 +42,7 @@ B . Carilah nilai t (p-value)
 C . Tentukanlah apakah terdapat pengaruh yang signifikan secara statistika dalam hal kadar saturasi oksigen , sebelum dan sesudah melakukan aktivitas 𝐴 jika diketahui tingkat signifikansi 𝛼 = 5% serta H0 : “tidak ada pengaruh yang signifikan secara statistika dalam hal kadar saturasi oksigen , sebelum dan sesudah melakukan aktivitas 𝐴”  
 - Melihat hasil p-value yang didapatkan dari poin b, yakni 6.003e-05, yang mana lebih kecil dari α, 
   maka kita tolak h0 atau terima h1 sehingga dapat disimpulkan bahwa terdapat pengaruh yang signifikan 
-  secara statistika dalam hal kadar saturasi oksigen, sebelum dan sesudah melakukan aktivitas 𝐴sebesar 5%
+  secara statistika dalam hal kadar saturasi oksigen, sebelum dan sesudah melakukan aktivitas 𝐴 sebesar 5%
 
 <br>
 
@@ -186,7 +186,7 @@ E . Verifikasilah jawaban model 1 dengan Post-hoc test Tukey HSD, dari nilai p y
   ```
   <img width="478" alt="image" src="https://user-images.githubusercontent.com/105977864/206898664-c54bb30d-d65d-4997-9f7b-833ebade2237.png">
     
-  Dari hasil tersebut, dapat dilihat bahwa dengan menggunakan 𝛼 = 5%, perbedaan panjang kucing yang signifikan adalah grup 2 (Kucing Hitam) terhadap grup 1 (Kucing Oren) dan grup 3 (Kucing Putih).  
+  Dari hasil tersebut, dapat dilihat bahwa dengan menggunakan 𝛼 = 5%, perbedaan panjang kucing yang signifikan adalah grup 2 (Kucing Hitam) terhadap grup 1 (Kucing Oren) dan grup 3 (Kucing Putih) sedangkan grup 1 (Kucing Oren) dan grup 3 (Kucing Putih) memiliki panjang yang relatif sama.  
   
 F . Visualisasikan data dengan ggplot2  
 - untuk melakukan hal ini, pertama kita perlu install dan run terlebih dahulu package untuk library yang kita butuhkan sebagai berikut,  
