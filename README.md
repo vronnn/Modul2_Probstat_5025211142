@@ -65,7 +65,7 @@ B . Jelaskan maksud dari output yang dihasilkan!
   ```
   <img width="481" alt="image" src="https://user-images.githubusercontent.com/105977864/206892921-dc237993-973e-4088-a86c-0e1d7108f711.png">  
     
-  Hasil tersebut menunjukkan bahwa dengan selang kepercayaan sebesar 95%, didapatkan hasil perhitungan rata - rata jarak tempuh mobil menggunakan sampel acak untuk 100 responden adalah di antara 22726,16 km dan 24273,84 km per tahunnya sehingga klaim awal atau h0 pada soal dapat diterima
+  Hasil tersebut menunjukkan bahwa dengan selang kepercayaan sebesar 95%, didapatkan hasil perhitungan rata - rata jarak tempuh mobil menggunakan sampel acak untuk 100 responden adalah di antara 22726,16 km dan 24273,84 km per tahunnya sehingga tolak h0 dan terima h1 yang merupakan klaim pada soal
   
 C . Buatlah kesimpulan berdasarkan P-Value yang dihasilkan!  
 - Dapat dilihat pada hasil dari poin b, p-value yang didapatkan (< 2.2e-16) lebih kecil dibandingkan dengan *significant level* α = 0,05, maka kita tolak h0. sehingga dapat disimpulkan bahwa rata - rata jarak tempuh mobil per tahunnya lebih besar dari 20.000 km.
@@ -115,10 +115,10 @@ D . Nilai Kritikal
   ```
   <img width="549" alt="image" src="https://user-images.githubusercontent.com/105977864/206893244-be852eea-2bd4-4d23-bac3-22842a15eedf.png">
 E . Keputusan  
-- lorem ipsum dolor sit amet  
+- Melihat p-value yang lebih kecil dari α, maka kita tolak H0 dan terima H1
   
 F . Kesimpulan  
-- Kesimpulan yang didapatkan yaitu perbedaan rata-rata yang terjadi tidak ada jika dilihat dari uji statistik. Namun, akan ada (meski tidak signifikan) jika dipengaruhi oleh nilai kritikal.
+- Terdapat perbedaan rata - rata nilai saham di Bandung dengan di Bali
 
 <br>
 
