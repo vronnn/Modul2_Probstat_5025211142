@@ -8,45 +8,49 @@ sd(selisih)
 # b. cari nilai t (p-value)
 t.test(sesudah, sebelum, paired = TRUE)
 
+# c. apakah ada pengaruh signifikan terhadap saturasi oksigen sebelum dan sesudah melakukan aktivitas a
+# α = 5% dan h0 : "tidak ada pengaruh signifikan"
+# melihat hasil p-value yang didapatkan dari poin b, yakni 6.003e-05, yang mana lebih kecil dari α, maka kita tolak h0 atau terima h1
+# sehingga dapat disimpulkan bahwa terdapat pengaruh yang signifikan secara statistika dalam hal kadar saturasi oksigen, sebelum dan sesudah melakukan aktivitas 𝐴sebesar 5%
+
 # Soal no 2
+# a. Setuju dengan klaim? (ada di readme)
+# b. Jelaskan maksud output (penjelasan ada di readme)
+library(BSDA)
+tsum.test(mean.x = 23500, s.x = 3900, n.x = 100)
+# c. buat kesimpulan berdasarkan p-value (ada di readme)
+
+
+# Soal no 3
+# a. tentukan h0 dan h1 (ada di readme)
 # b. hitung sampel statistik
 tsum.test(mean.x = 3.64, s.x = 1.67, n.x = 19, 
           mean.y = 2.79, s.y = 1.32, n.y = 27, 
           alternative = "greater", var.equal = TRUE)
 
-# Soal no 3
-# b. buat 3 grup untuk masing - masing spesies dan gambarkan plot kuantil normalnya
-myFile  <- read.table(url("https://rstatisticsandresearch.weebly.com/uploads/1/0/2/6/1026585/onewayanova.txt"), h=T) 
-dim(myFile)
-head(myFile)
-attach(myFile)
+# c. uji sampel statistik (df = 2)
+library(mosaic)
+plotDist(dist = 't', df = 2, col = "red")
 
-myFile$Group <- as.factor(myFile$Group)
-myFile$Group = factor(myFile$Group,labels = c("Kucing Oren","Kucing Hitam","Kucing Putih"))
+# d. nilai kritikal
+qchisq(p = 0.05, df = 2, lower.tail = FALSE)
 
-class(myFile$Group)
+# e. keputusan (ada di readme)
+# f. kesimpulan (ada di readme)
 
-group1 <- subset(myFile, Group=="Kucing Oren")
-group2 <- subset(myFile, Group=="Kucing Hitam")
-group3 <- subset(myFile, Group=="Kucing Putih")
 
-qqnorm(group1$Length)
-qqline(group1$Length)
+# Soal no 4
+# a. buat 3 grup untuk masing - masing spesies dan gambarkan plot kuantil normalnya
+data <- read.table(url("https://rstatisticsandresearch.weebly.com/uploads/1/0/2/6/1026585/onewayanova.txt"), h = T)
 
-dataoneway <- read.table(url("https://rstatisticsandresearch.weebly.com/uploads/1/0/2/6/1026585/onewayanova.txt"), h=T)
-dim(myFile)
-head(myFile)
-attach(dataoneway)
-names(dataoneway)
+data$Group <- as.factor(data$Group)
+data$Group = factor(data$Group,labels = c("Kucing Oren", "Kucing Hitam", "Kucing Putih"))
 
-dataoneway$Group <- as.factor(dataoneway$Group)
-dataoneway$Group = factor(dataoneway$Group,labels = c("Kucing Oren", "Kucing Hitam", "Kucing Putih"))
+class(data$Group)
 
-class(dataoneway$Group)
-
-Group1 <- subset(dataoneway, Group == "Kucing Oren")
-Group2 <- subset(dataoneway, Group == "Kucing Hitam")
-Group3 <- subset(dataoneway, Group == "Kucing Putih")
+Group1 <- subset(data, Group == "Kucing Oren")
+Group2 <- subset(data, Group == "Kucing Hitam")
+Group3 <- subset(data, Group == "Kucing Putih")
 
 qqnorm(Group1$Length)
 qqline(Group1$Length)
@@ -58,9 +62,20 @@ qqnorm(Group3$Length)
 qqline(Group3$Length)
 
 # b. cari homogenitas variancenya
-bartlett.test(Length ~ Group, data = dataoneway)
+bartlett.test(Length ~ Group, data = data)
 
-# Soal no. 4
+# c. uji anova dan model linearnya
+model1 = lm(Length ~ Group, data = data)
+anova(model1)
+
+# e. uji tukey
+TukeyHSD(aov(model1))
+
+# f. visualisasi data
+library("ggplot2")
+ggplot(dataoneway, aes(x = Group, y = Length)) + geom_boxplot(fill = "grey80", colour = "black") + scale_x_discrete() + xlab("Treatment Group") + ylab("Length (cm)")
+
+# Soal no. 5
 # a. buat plot sederhana
 install.packages("multcompView")
 library(readr)
@@ -75,10 +90,6 @@ qplot(x = Temp, y = Light, geom = "point", data = GTL) +
   facet_grid(.~Glass, labeller = label_both)
 
 # b. Uji anova 2 arah untuk 2 faktor
-GTL$Glass <- as.factor(GTL$Glass)
-GTL$Temp_Factor <- as.factor(GTL$Temp)
-str(GTL)
-
 anova <- aov(Light ~ Glass*Temp_Factor, data = GTL)
 summary(anova)
 
@@ -86,4 +97,16 @@ summary(anova)
 data_summary <- group_by(GTL, Glass, Temp) %>%
   summarise(mean=mean(Light), sd=sd(Light)) %>%
   arrange(desc(mean))
+print(data_summary)
+
+# d. uji tukey
+tukey <- TukeyHSD(anova)
+print(tukey)
+
+# e. perbedaan uji tukey dan uji anova
+tukey.cld <- multcompLetters4(anova, tukey)
+print(tukey.cld)
+
+cld <- as.data.frame.list(tukey.cld$`Glass:Temp_Factor`)
+data_summary$Tukey <- cld$Letters
 print(data_summary)
